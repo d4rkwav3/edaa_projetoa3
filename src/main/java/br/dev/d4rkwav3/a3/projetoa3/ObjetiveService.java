@@ -1,5 +1,6 @@
 package br.dev.d4rkwav3.a3.projetoa3;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -14,5 +15,12 @@ public class ObjetiveService {
 
     public List<Objetive> getObjetives() {
         return objs;
+    }
+
+    public Objetive create(Objetive obj) {
+        List<Objetive> estender = new ArrayList<>(objs);
+        estender.add(obj);
+        this.objs = List.copyOf(estender);
+        return obj;
     }
 }

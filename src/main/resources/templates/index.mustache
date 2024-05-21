@@ -6,6 +6,11 @@
 
 <ul>
     {{#objetivos}}
-    <li>{{name}}</li>
+    <li>{{description}}</li>
     {{/objetivos}}
 </ul>
+
+<form action="/new-obj" method="post">
+    <input type="text" name="description">
+    <button type="submit">Enviar</button>
+</form>
