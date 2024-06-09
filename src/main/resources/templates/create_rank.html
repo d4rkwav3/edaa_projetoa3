@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="icon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Gerar rank musical</h1>
+
+    <p>Preencha e selecione os campos abaixo para gerar um
+        rank musical.
+    </p>
+
+    <form id="rank" method="post" action="rank/create">
+        <label for="userName" th:if="${formInválido == true}">O nome de usuário não pode ser vazio! Verifique e tente novamente</label>
+        <label for="userName" th:if="${formInválido == false}">Insira seu nome de usuário da Last.FM</label>
+        <input type="text" name="userName" id="username">
+    
+        <label for="periodo">Selecione o período de analise:</label>
+        <select name="period" id="date">
+            <option value="week">Última semana</option>
+            <option value="month">Último mês</option>
+        </select>
+    
+        <button type="submit">Gerar Ranking</button>
+
+    </form>  
+</body>
+</html>

@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "lastfm.apikey",
+    "type": "java.lang.String",
+    "description": "Chave de API para usar a API da LastFM"
+  },
+  {
+    "name": "lastfm.apiurl",
+    "type": "java.lang.String",
+    "description": "A URL base para as requisições da API da LastFM"
+  }
+]}
