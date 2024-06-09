@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: lightgray;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+li {
+    text-align: left;
+}
+
+body > p {
+    padding-left: 25vw;
+    padding-right: 25vw;
+}
