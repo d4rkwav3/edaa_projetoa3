@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,21 +18,20 @@
     <h2>Membros:</h2>
 
     <ul>
-        <li>
-            Bruno Venâncio de Souza e Silva, RA: 821135934
-        </li>
-        <li>
-            Henrick Melo Vital, RA: 821224905
-        </li>
+        <li th:each="membro : ${membros}" th:text="${membro}"></li>
     </ul>
-
 
     <p>
         O projeto tem como objetivo buscar as faixas ouvidas de um determinado usuário da Last.fm, 
         filtrando por data e ordenar os dados de modo a determinar um ranking dos artistas, faixas 
-        e genêros mais ouvidos pelo usuário. Os dados são salvos em um banco de dados SQLite e são
-        usados para comparar ranks passados.
+        e genêros mais ouvidos pelo usuário em determinado período. Os dados são salvos em um banco 
+        de dados SQLite e são usados para comparar ranks passados.
     </p>
+
+    <div>
+        <button><a href="/rank">Criar seu ranking</a></button>
+        <button><a href="/history">Ver ranks passados</a></button>
+    </div>
     
 </body>
 </html>

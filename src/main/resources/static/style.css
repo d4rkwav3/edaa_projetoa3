@@ -19,3 +19,49 @@ body > p {
     padding-left: 25vw;
     padding-right: 25vw;
 }
+
+div {
+    display: flex;
+    flex-direction: row;
+}
+
+button, a {
+    font-size: 1vw;
+    text-decoration: none;
+    color: black;
+    size: 2vw;
+    margin: 1vw;
+    padding: 1vw;
+    border-radius: 5px;
+}
+
+label {
+    padding-top: 0.5vw;
+}
+
+input {
+    width: 12vw;
+    height: 1.5vw;
+    border-radius: 5px;
+    margin: 5px 0;
+    padding: 5px 15px;
+}
+
+select {
+    width: 13.5vw;
+    height: 1.5vw;
+    border-radius: 5px;
+    margin: 5px 0;
+    padding: 5px 15px;
+}
+
+#rank {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+form > button {
+    margin-top: 3vw;
+}
