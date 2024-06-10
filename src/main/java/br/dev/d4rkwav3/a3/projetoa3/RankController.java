@@ -9,6 +9,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class RankController {
     private final LastFmService lastFmService;
+    private boolean resultado = false;
+
+    public boolean isResultado() {
+        return resultado;
+    }
+
+    public void setResultado(boolean resultado) {
+        this.resultado = resultado;
+    }
 
     public RankController(LastFmService lastFmService) {
         this.lastFmService = lastFmService;
@@ -17,6 +26,13 @@ public class RankController {
     @GetMapping("/rank")
     public String createRank(Model model) {
         model.addAttribute("formInválido", lastFmService.isInvalid());
+
+        if(lastFmService.getTracks() != null && !lastFmService.getTracks().isEmpty()) {
+            setResultado(true);
+            model.addAttribute("resultado", isResultado());
+            model.addAttribute("tracks", lastFmService.getTracks());
+        }
+
         return "create_rank";
     }
     
@@ -26,7 +42,7 @@ public class RankController {
             lastFmService.setInvalid(true);
             return "redirect:/rank";
         } else {
-            lastFmService.setInvalid(false);
+            lastFmService.getWeeklyTracks(form);
             return "redirect:/rank";
         }
     }

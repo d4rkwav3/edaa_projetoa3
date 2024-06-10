@@ -25,7 +25,12 @@
         </select>
     
         <button type="submit">Gerar Ranking</button>
+    </form>
 
-    </form>  
+    <ul th:if= "${resultado == true}">
+        <li th:each= "track:${tracks}" th:text="${track.getName}"></li>
+    </ul>
+
+    </ul>
 </body>
 </html>
