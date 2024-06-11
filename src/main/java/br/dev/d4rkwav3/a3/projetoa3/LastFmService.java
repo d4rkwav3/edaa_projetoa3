@@ -19,7 +19,12 @@ public class LastFmService {
     @Value("${lastfm.apiurl}") private String baseUrl;
     // private RestClient httpClient;
     private Collection<Track> tracks;
+    private User lastfmUser;
 
+
+    public User getLastfmUser() {
+        return lastfmUser;
+    }
 
     public Collection<Track> getTracks() {
         return tracks;
@@ -40,7 +45,11 @@ public class LastFmService {
     }
 
     public void getWeeklyTracks(@ModelAttribute FormData form) {
-        setTracks(User.getRecentTracks(form.userName(), apikey).getPageResults());
+        setTracks(User.getRecentTracks(form.userName(), 0, 200, apikey).getPageResults());
+    }
+
+    public void verifyUser(@ModelAttribute FormData form) {
+        this.lastfmUser = User.getInfo(form.userName(), apikey);
     }
 
     public FormData getForm() {

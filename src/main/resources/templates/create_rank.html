@@ -14,7 +14,7 @@
     </p>
 
     <form id="rank" method="post" action="rank/create">
-        <label for="userName" th:if="${formInválido == true}">O nome de usuário não pode ser vazio! Verifique e tente novamente</label>
+        <label for="userName" th:if="${formInválido == true}">O nome de usuário não encontrado ou inválido, verifique e tente novamente</label>
         <label for="userName" th:if="${formInválido == false}">Insira seu nome de usuário da Last.FM</label>
         <input type="text" name="userName" id="username">
     
@@ -27,10 +27,15 @@
         <button type="submit">Gerar Ranking</button>
     </form>
 
-    <ul th:if= "${resultado == true}">
+    <!-- <ul th:if= "${resultado == true}">
         <li th:each= "track:${tracks}" th:text="${track.getName}"></li>
-    </ul>
+    </ul> -->
 
-    </ul>
+    <!-- <ul th:if="${resultado == true}">
+        <li th:text="${user.getRealname}"></li>
+        <li th:text="${user.getAge}"></li>
+        <li th:text="${user.getGender}"></li>
+        <li th:text="${user.getCountry}"></li>
+    </ul> -->
 </body>
 </html>

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+
 @Controller
 public class RankController {
     private final LastFmService lastFmService;
@@ -27,11 +28,21 @@ public class RankController {
     public String createRank(Model model) {
         model.addAttribute("formInválido", lastFmService.isInvalid());
 
-        if(lastFmService.getTracks() != null && !lastFmService.getTracks().isEmpty()) {
-            setResultado(true);
-            model.addAttribute("resultado", isResultado());
-            model.addAttribute("tracks", lastFmService.getTracks());
-        }
+        // if(lastFmService.getTracks() != null && !lastFmService.getTracks().isEmpty()) {
+        //     setResultado(true);
+        //     model.addAttribute("resultado", isResultado());
+        //     model.addAttribute("tracks", lastFmService.getTracks());
+        // }
+
+        // User usr = lastFmService.getLastfmUser();
+
+        // if(usr != null) {
+        //     setResultado(true);
+        //     model.addAttribute("resultado", isResultado());
+        //     model.addAttribute("user", usr);
+        // } else if (usr == null) {
+        //     usr.
+        // }
 
         return "create_rank";
     }
@@ -42,8 +53,15 @@ public class RankController {
             lastFmService.setInvalid(true);
             return "redirect:/rank";
         } else {
-            lastFmService.getWeeklyTracks(form);
-            return "redirect:/rank";
+            lastFmService.verifyUser(form);
+            
+            if(lastFmService.getLastfmUser() == null) {
+                lastFmService.setInvalid(true);
+                return "redirect:/rank";
+            } else {
+                return "redirect:/rank";
+            }
+    
         }
     }
     
