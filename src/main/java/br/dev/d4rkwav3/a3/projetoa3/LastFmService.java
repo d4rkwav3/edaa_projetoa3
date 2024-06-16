@@ -35,13 +35,16 @@ public class LastFmService {
     }
 
     public LastFmService() {
-        // this.httpClient = RestClient.builder()
-        //     .baseUrl(baseUrl)
-        //     .defaultHeader("user-agent", "ProjetoA3")
-        //     .build();
-        Caller
+        if (this.baseUrl == null) {
+            Caller
+                .getInstance()
+                .setApiRootUrl("https://ws.audioscrobbler.com/2.0/");
+        } else {
+            Caller
             .getInstance()
             .setApiRootUrl(baseUrl);
+        }
+        
     }
 
     public void getWeeklyTracks(@ModelAttribute FormData form) {

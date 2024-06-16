@@ -4,6 +4,11 @@ public record FormData(
     String userName, 
     String period) {
 
+    public FormData(String userName, String period) {
+        this.userName = userName.strip();
+        this.period = period;
+    }
+
     public String userName() {
         return userName;
     }

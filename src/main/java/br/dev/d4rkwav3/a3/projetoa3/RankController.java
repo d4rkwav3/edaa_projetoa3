@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import de.umass.lastfm.User;
+
 
 @Controller
 public class RankController {
@@ -34,34 +36,28 @@ public class RankController {
         //     model.addAttribute("tracks", lastFmService.getTracks());
         // }
 
-        // User usr = lastFmService.getLastfmUser();
+        User usr = lastFmService.getLastfmUser();
 
-        // if(usr != null) {
-        //     setResultado(true);
-        //     model.addAttribute("resultado", isResultado());
-        //     model.addAttribute("user", usr);
-        // } else if (usr == null) {
-        //     usr.
-        // }
+        if(usr != null) {
+            setResultado(true);
+            model.addAttribute("resultado", isResultado());
+            model.addAttribute("user", usr);
+        } else if (usr == null) {
+            lastFmService.setInvalid(true);
+        }
 
         return "create_rank";
     }
     
     @PostMapping("/rank/create")
     public String postMethodName(@ModelAttribute FormData form) {
-        if (form.userName().length() < 3) {
+        lastFmService.verifyUser(form);
+        
+        if(lastFmService.getLastfmUser() == null) {
             lastFmService.setInvalid(true);
             return "redirect:/rank";
         } else {
-            lastFmService.verifyUser(form);
-            
-            if(lastFmService.getLastfmUser() == null) {
-                lastFmService.setInvalid(true);
-                return "redirect:/rank";
-            } else {
-                return "redirect:/rank";
-            }
-    
+            return "redirect:/rank";
         }
     }
     
