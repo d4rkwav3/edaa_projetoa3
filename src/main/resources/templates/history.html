@@ -9,11 +9,19 @@
 </head>
 <body>
     <h1 th:if="${invalid == true}">Nenhum usuário selecionado!</h1>
-    <h2 th:if="${invalid == true}">Volte a página "Criar rank semanal" e tente um nome de usuário válido</h2>
+    <h2 th:if="${invalid == true}">Digite o nome de usuário</h2>
 
-    <div th:if="${invalid == true}">
-        <button><a href="/">Voltar para o início</a></button>
-    </div>
+    <form id="history" method="get" action="/history">
+        
+        <label for="user" id="pad">Insira seu nome de usuário da Last.FM</label>
+        <input type="text" name="user" id="username">
+    
+        <button class="history" type="submit">Pesquisar histórico</button>
+    </form>
 
     <h1 th:if="${invalid == false}">Parece tudo certo <span th:text="${user}"></span></h1>
+
+    <div>
+        <button><a href="/">Voltar para o início</a></button>
+    </div>
 </body>

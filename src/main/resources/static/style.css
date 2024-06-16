@@ -65,3 +65,23 @@ select {
 form > button {
     margin-top: 3vw;
 }
+
+#history {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.history {
+    margin-top: 1vw;
+    font-size: 1vw;
+    text-decoration: none;
+    color: black;
+    padding: 1vw;
+    border-radius: 5px;
+}
+
+#pad {
+    padding-right: 1vw;
+}
