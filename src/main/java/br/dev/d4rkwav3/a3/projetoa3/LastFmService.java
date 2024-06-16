@@ -41,7 +41,7 @@ public class LastFmService {
         //     .build();
         Caller
             .getInstance()
-            .setApiRootUrl("https://ws.audioscrobbler.com/2.0/");
+            .setApiRootUrl(baseUrl);
     }
 
     public void getWeeklyTracks(@ModelAttribute FormData form) {
