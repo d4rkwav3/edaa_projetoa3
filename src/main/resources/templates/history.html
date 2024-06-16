@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="icon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>Projeto A3 EDAA</title>
+</head>
+<body>
+    <h1 th:if="${invalid == true}">Nenhum usuário selecionado!</h1>
+    <h2 th:if="${invalid == true}">Volte a página "Criar rank semanal" e tente um nome de usuário válido</h2>
+
+    <div th:if="${invalid == true}">
+        <button><a href="/">Voltar para o início</a></button>
+    </div>
+
+    <h1 th:if="${invalid == false}">Parece tudo certo <span th:text="${user}"></span></h1>
+</body>

@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author Bruno Venâncio
  */
 @SpringBootApplication
-public class Projetoa3Application {
+public class ProjetoA3 {
 
 	/**
 	 * Metódo de execução da aplicação
@@ -17,7 +17,7 @@ public class Projetoa3Application {
 	 * argumento é processado.
 	 */
 	public static void main(String[] args) {
-		SpringApplication.run(Projetoa3Application.class, args);
+		SpringApplication.run(ProjetoA3.class, args);
 	}
 
 }

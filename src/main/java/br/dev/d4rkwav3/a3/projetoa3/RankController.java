@@ -57,7 +57,7 @@ public class RankController {
             lastFmService.setInvalid(true);
             return "redirect:/rank";
         } else {
-            return "redirect:/rank";
+            return "redirect:/history?user=" + form.userName();
         }
     }
     
