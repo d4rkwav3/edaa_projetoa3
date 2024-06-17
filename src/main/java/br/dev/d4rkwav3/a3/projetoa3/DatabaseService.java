@@ -4,15 +4,29 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+/**
+ * Classe de serviço usuada para realizar as
+ * transações com o banco de dados
+ * 
+ * @author Bruno Venâncio
+ */
 @Service
 public class DatabaseService {
 
     private final HistoryRepository history;
 
+    /**
+     * Construtor da classe
+     * @param history Injeta um repostório de banco de dados
+     */
     public DatabaseService(HistoryRepository history) {
         this.history = history;
     }
-
+    
+    /**
+     * Método para pegar todos os dados do banco de dados
+     * @return Retorna todos dados da tabela
+     */
     public List<History> getAll() {
         return history.findAll();
     }
