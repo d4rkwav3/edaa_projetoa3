@@ -1,7 +1,9 @@
 package br.dev.d4rkwav3.a3.projetoa3;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,7 +30,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name = "history")
-public class History {
+public class History implements Comparable<History> {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -79,6 +81,11 @@ public class History {
      */
     public LocalDateTime getDate() {
         return date;
+    }
+
+    @Override
+    public int compareTo(History faixa) {
+        return this.track.compareTo(faixa.track);
     }
 
     /**
@@ -218,7 +225,7 @@ public class History {
     /**
      * Método auxiliar para a função de ordenação quicksort
      * Troca as posições de dois objetos de um array de History
-     * @param histories 
+     * @param histories O array que contém os elementos
      * @param i A posição que irá "pra frente" no array
      * @param j A posição que irá "pra trás" no array
      */
@@ -226,5 +233,54 @@ public class History {
         History temp = histories[i];
         histories[i] = histories[j];
         histories[j] = temp;
+    }
+
+    /**
+     * Método que busca faixas em uma lista usando o método de busca
+     * binária
+     * @param history Uma lista com objetos dessa classe
+     * @param track Uma string com o nome exato da faixa
+     * @return Retorna uma lista com todos os objetos do tipo History
+     * que contém um atributo track de nome identido ao parâmetro track
+     */
+    public static List<History> buscaPorFaixa(List<History> history, String track) {
+        List<History> resultaddo = new ArrayList<>();
+        int esquerda = 0;
+        int direita = history.size() - 1;
+        int centro = -1;
+
+        // Busca binária para encontrar uma ocorrência
+        while (esquerda <= direita) {
+            centro = esquerda + (direita - esquerda) / 2;
+            History meio = history.get(centro);
+            int comparacao = (meio.getTrack() == null) ? -1 : meio.getTrack().compareTo(track);
+            if (comparacao == 0) {
+                break;
+            } else if (comparacao < 0) {
+                esquerda = centro + 1;
+            } else {
+                direita = centro - 1;
+            }
+        }
+
+        if (esquerda > direita) {
+            return resultaddo; // Nenhum resultado encontrado
+        }
+
+        // Encontrar todas as ocorrências à esquerda
+        int temp = centro;
+        while (temp >= 0 && track.equals(history.get(temp).getTrack())) {
+            resultaddo.add(history.get(temp));
+            temp--;
+        }
+
+        // Encontrar todas as ocorrências à direita
+        temp = centro + 1;
+        while (temp < history.size() && track.equals(history.get(temp).getTrack())) {
+            resultaddo.add(history.get(temp));
+            temp++;
+        }
+
+        return resultaddo;
     }
 }

@@ -5,6 +5,7 @@ body {
     justify-content: center;
     background-color: black;
     color: lightgray;
+    font-size: 1vw;
 }
 
 h1, h2, h3 {
@@ -55,7 +56,7 @@ select {
     padding: 5px 15px;
 }
 
-#rank {
+#rank, .vertical {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,6 +89,7 @@ form > button {
 
 div, p {
     margin-top: 15px;
+
 }
 
 .headers > a {
@@ -96,4 +98,16 @@ div, p {
     text-decoration: underline;
     color: lightgray;
     padding: 1vw;
+}
+
+table {
+    border-spacing: 15px;
+}
+
+.search {
+    padding-left: 1vw;
+}
+
+#trackname {
+    margin-bottom: 1.6vw;
 }

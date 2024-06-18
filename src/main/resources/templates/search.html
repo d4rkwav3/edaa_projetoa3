@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="icon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>Projeto A3 EDAA</title>
+</head>
+<body>
+    <h1>Busca por faixas</h1>
+
+    <form id="history" method="get" action="/search">
+        <button class="history"><a href="/">Voltar para o início</a></button>
+
+        <div class="vertical">
+            <label for="track" id="search">Digite um termo de busca abaixo:</label>
+            <input type="text" name="track" id="trackname" placeholder="Nome da música">
+        </div>
+    
+        <button class="history" type="submit">Pesquisar</button>
+    </form>
+
+    <h1 th:if="${result != null}"><span th:text="${#lists.size(result)}"></span> registro(s) encontrados para o termo <span th:text="${track}"></span></h1>
+
+    <div id="info" th:if="${result != null}">
+        <table th:if="${#lists.size(result) > 0}">
+            <tr>
+                <th class="headers">Usuário</th>
+                <th class="headers">Música</th>
+                <th class="headers">Artista(s)</th>
+                <th class="headers">Álbum</th>
+                <th class="headers">Data</th>
+            </tr>
+            <tr th:each="track : ${result}">
+                <td th:text="${track.getUserName}"></td>
+                <td th:text="${track.getTrack}"></td>
+                <td th:text="${track.getArtist}"></td>
+                <td th:text="${track.getAlbum}"></td>
+                <td th:text="${#temporals.format(track.getDate, 'dd-MM-yyyy HH:mm')}"></td>
+            </tr>
+        </table>
+    </div>
+    
+</body>
