@@ -3,7 +3,8 @@
 ## Estrutura de Dados e Análise de Algoritmos
 
 Tema: Busca e Ordenação de dados usandos Dados da Last.FM
-## Autores
+
+## Membros
 
 - Bruno Venâncio de Souza e Silva - RA: 821135934
 - Henrick Melo Vital - RA: 821224905
