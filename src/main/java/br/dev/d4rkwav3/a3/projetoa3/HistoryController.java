@@ -75,11 +75,22 @@ public class HistoryController {
                     if (track.getUserName().equals(user)) userHistory.add(track);
                 }
                 
-                // Coverte a lista em um array para realizar a ordenação
                 tabelaArray = userHistory.toArray(History[]::new);
                 db.setCache(tabelaArray);
-            } else {
+                db.setUserInCache(user);
+
+            } else if (db.getUserInCache().equals(user)) {
                 tabelaArray = db.getCache();
+
+            } else {
+                List<History> historico = db.getAll();
+    
+                for (History track : historico) {
+                    if (track.getUserName().equals(user)) userHistory.add(track);
+                }
+
+                tabelaArray = userHistory.toArray(History[]::new);
+                db.setCache(tabelaArray);
             }       
 
             if (orderby == null) {

@@ -15,6 +15,15 @@ public class DatabaseService {
 
     private final HistoryRepository history;
     private History[] cache;
+    private String userInCache;
+
+    public String getUserInCache() {
+        return userInCache;
+    }
+
+    public void setUserInCache(String userInCache) {
+        this.userInCache = userInCache;
+    }
 
     public History[] getCache() {
         return cache;
@@ -26,14 +35,16 @@ public class DatabaseService {
 
     /**
      * Construtor da classe
+     * 
      * @param history Injeta um repostório de banco de dados
      */
     public DatabaseService(HistoryRepository history) {
         this.history = history;
     }
-    
+
     /**
      * Método para pegar todos os dados do banco de dados
+     * 
      * @return Retorna todos dados da tabela
      */
     public List<History> getAll() {
