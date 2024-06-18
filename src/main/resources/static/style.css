@@ -89,3 +89,11 @@ form > button {
 div, p {
     margin-top: 15px;
 }
+
+.headers > a {
+    margin-top: 1vw;
+    font-size: 1vw;
+    text-decoration: underline;
+    color: lightgray;
+    padding: 1vw;
+}

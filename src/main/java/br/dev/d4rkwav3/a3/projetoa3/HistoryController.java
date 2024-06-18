@@ -53,6 +53,7 @@ public class HistoryController {
     @GetMapping("/history")
     public String getHistory(
         @RequestParam(required = false) String user, 
+        @RequestParam(required = false) String orderby,
         Model model) {
 
         if (user == null) {
@@ -72,7 +73,21 @@ public class HistoryController {
             }
 
             History[] array = userHistory.toArray(History[]::new);
-            
+
+            if (orderby == null) {
+                orderby = "none";
+            }
+
+            switch (orderby) {
+                case "music":
+                    History.ordenarPorTrack(array);
+                    break;
+                case "date":
+                    History.ordenarPorData(array);
+                case "none":
+                    break;
+            }
+
             model.addAttribute("invalid", false);
             model.addAttribute("user", user);
             model.addAttribute("usr", array);

@@ -91,15 +91,12 @@ public class History {
         if (histories.length > 1) {
             int divisao = histories.length / 2;
 
-            // Dividindo o array em duas metades
             History[] esquerda = Arrays.copyOfRange(histories, 0, divisao);
             History[] direita = Arrays.copyOfRange(histories, divisao, histories.length);
 
-            // Ordenando cada metade
             ordenarPorTrack(esquerda);
             ordenarPorTrack(direita);
 
-            // Mesclando as metades ordenadas
             mesclar(histories, esquerda, direita);
         }
     }
@@ -137,7 +134,7 @@ public class History {
      * a partir da data (mais antiga para mais atual)
      * @param histories Um array do tipo History (essa própria classe)
      */
-    public static void sortByDate(History[] histories) {
+    public static void ordenarPorData(History[] histories) {
         quickSort(histories, 0, histories.length - 1);
     }
 
