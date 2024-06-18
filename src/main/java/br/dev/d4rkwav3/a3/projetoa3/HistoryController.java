@@ -65,18 +65,18 @@ public class HistoryController {
             return "history";
         } else {
             List<History> historico = db.getAll();
-            List<History> userHistory = new ArrayList<History>();
+            List<History> userHistory = new ArrayList<History>();         
 
             for (History track : historico) {
                 if (track.getUserName().equals(user)) userHistory.add(track);
             }
 
+            History[] array = userHistory.toArray(History[]::new);
+            
             model.addAttribute("invalid", false);
             model.addAttribute("user", user);
-            // model.addAttribute("hist", historico);
-            model.addAttribute("usr", userHistory);
-            // History track = historico.get(0);
-            // track.getT
+            model.addAttribute("usr", array);
+
             return "history";
         }
 

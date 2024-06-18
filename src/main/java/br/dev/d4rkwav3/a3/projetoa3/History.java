@@ -79,4 +79,64 @@ public class History {
     public LocalDateTime getDate() {
         return date;
     }
+
+    /**
+     * Método principal para a ordenação de um array de History
+     * a partir da data (mais antiga para mais atual)
+     * @param histories Um array do tipo History (essa própria classe)
+     */
+    public static void sortByDate(History[] histories) {
+        quickSort(histories, 0, histories.length - 1);
+    }
+
+    /**
+     * Implementação do quicksort por data, enquanto o início for menor 
+     * que o fim, particiona o array em duas partes e as ordena recursivamente
+     * @param histories Um array do tipo History (essa própria classe)
+     * @param inicio o primeiro elemento do array
+     * @param fim o ultimo elemento do array
+     */
+    private static void quickSort(History[] histories, int inicio, int fim) {
+        if (inicio < fim) {
+            int pivot = particionar(histories, inicio, fim);
+            quickSort(histories, inicio, pivot - 1);
+            quickSort(histories, pivot + 1, fim);
+        }
+    }
+
+    /**
+     * Método para dividir um array de History em dois, seleciona o último
+     * elemento como pivot, itera pelo array e troca a posição dos elementos
+     * caso o elemento seguinte é de uma data anterior a data do elemento atual
+     * de modo que os elementos da data mais antiga ficam a esquerda
+     * @param histories O array que será particionado
+     * @param inicio O primeiro elemento do array
+     * @param fim O último elemento do array
+     * @return
+     */
+    private static int particionar(History[] histories, int inicio, int fim) {
+        LocalDateTime pivot = histories[fim].getDate();
+        int i = (inicio - 1);
+        for (int j = inicio; j < fim; j++) {
+            if (histories[j].getDate().isBefore(pivot)) {
+                i++;
+                inverter(histories, i, j);
+            }
+        }
+        inverter(histories, i + 1, fim);
+        return i + 1;
+    }
+
+    /**
+     * Método auxiliar para a função de ordenação quicksort
+     * Troca as posições de dois objetos de um array de History
+     * @param histories 
+     * @param i A posição que irá "pra frente" no array
+     * @param j A posição que irá "pra trás" no array
+     */
+    private static void inverter(History[] histories, int i, int j) {
+        History temp = histories[i];
+        histories[i] = histories[j];
+        histories[j] = temp;
+    }
 }
