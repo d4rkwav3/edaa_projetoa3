@@ -1,6 +1,7 @@
 package br.dev.d4rkwav3.a3.projetoa3;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -78,6 +79,57 @@ public class History {
      */
     public LocalDateTime getDate() {
         return date;
+    }
+
+    /**
+     * Método de ordenação usando MergeSort para o atributo Track
+     * Divide o array em dois se ele tiver mais de um elemento e 
+     * chama recursivamente o método auxiliar merge para cada parte
+     * @param histories Um array do tipo History (essa própria classe)
+     */
+    public static void ordenarPorTrack(History[] histories) {
+        if (histories.length > 1) {
+            int divisao = histories.length / 2;
+
+            // Dividindo o array em duas metades
+            History[] esquerda = Arrays.copyOfRange(histories, 0, divisao);
+            History[] direita = Arrays.copyOfRange(histories, divisao, histories.length);
+
+            // Ordenando cada metade
+            ordenarPorTrack(esquerda);
+            ordenarPorTrack(direita);
+
+            // Mesclando as metades ordenadas
+            mesclar(histories, esquerda, direita);
+        }
+    }
+
+    /**
+     * Método auxiliar para ordenar por track, mescla os dois array
+     * comparando a track da esquerda com a direita, e realiza a troca
+     * se o noma da faixa for menor em ordem alfabetica.
+     * @param histories Um array do tipo History (essa própria classe)
+     * @param esquerda Um array do tipo History (dividido anteriormente)
+     * @param direita Um array do tipo History (dividido anteriormente)
+     */
+    private static void mesclar(History[] histories, History[] esquerda, History[] direita) {
+        int i = 0, j = 0, k = 0;
+
+        while (i < esquerda.length && j < direita.length) {
+            if (esquerda[i].getTrack().compareTo(direita[j].getTrack()) <= 0) {
+                histories[k++] = esquerda[i++];
+            } else {
+                histories[k++] = direita[j++];
+            }
+        }
+
+        while (i < esquerda.length) {
+            histories[k++] = esquerda[i++];
+        }
+
+        while (j < direita.length) {
+            histories[k++] = direita[j++];
+        }
     }
 
     /**
