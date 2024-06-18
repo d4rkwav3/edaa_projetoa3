@@ -82,6 +82,45 @@ public class History {
     }
 
     /**
+     * Método de ordenação por album usando o método Selection Sort
+     * @param histories Um array do tipo History (essa própria classe)
+     */
+    public static void ordenarPorAlbum(History[] histories) {
+        int tamanho = histories.length;
+        for (int i = 0; i < tamanho - 1; i++) {
+            // Encontra o menor elemento no subarray não ordenado
+            int minIndex = i;
+            for (int j = i + 1; j < tamanho; j++) {
+                if (histories[j].getAlbum().compareTo(histories[minIndex].getAlbum()) < 0) {
+                    minIndex = j;
+                }
+            }
+            // Troca o menor elemento encontrado com o primeiro elemento do subarray não ordenado
+            History temp = histories[minIndex];
+            histories[minIndex] = histories[i];
+            histories[i] = temp;
+        }
+    }
+
+    /**
+     * Método de ordenação por artista usando o método Insertion Sort
+     * @param histories Um array do tipo History (essa própria classe)
+     */
+    public static void ordenarPorArtista(History[] histories) {
+        for (int i = 1; i < histories.length; i++) {
+            History ref = histories[i];
+            int j = i - 1;
+
+            // Move os elementos do array que são maiores que a ref (referência) para uma posição à frente da sua posição atual
+            while (j >= 0 && histories[j].getArtist().compareTo(ref.getArtist()) > 0) {
+                histories[j + 1] = histories[j];
+                j = j - 1;
+            }
+            histories[j + 1] = ref;
+        }
+    }
+
+    /**
      * Método de ordenação usando MergeSort para o atributo Track
      * Divide o array em dois se ele tiver mais de um elemento e 
      * chama recursivamente o método auxiliar merge para cada parte

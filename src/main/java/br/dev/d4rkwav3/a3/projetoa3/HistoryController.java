@@ -65,32 +65,47 @@ public class HistoryController {
             model.addAttribute("user", null);
             return "history";
         } else {
-            List<History> historico = db.getAll();
-            List<History> userHistory = new ArrayList<History>();         
+            List<History> userHistory = new ArrayList<History>();
+            History[] tabelaArray;
 
-            for (History track : historico) {
-                if (track.getUserName().equals(user)) userHistory.add(track);
-            }
-
-            History[] array = userHistory.toArray(History[]::new);
+            if (db.getCache() == null) {
+                List<History> historico = db.getAll();
+    
+                for (History track : historico) {
+                    if (track.getUserName().equals(user)) userHistory.add(track);
+                }
+                
+                // Coverte a lista em um array para realizar a ordenação
+                tabelaArray = userHistory.toArray(History[]::new);
+                db.setCache(tabelaArray);
+            } else {
+                tabelaArray = db.getCache();
+            }       
 
             if (orderby == null) {
                 orderby = "none";
             }
 
             switch (orderby) {
-                case "music":
-                    History.ordenarPorTrack(array);
+                case "album":
+                    History.ordenarPorAlbum(tabelaArray);
+                    break;
+                case "artist":
+                    History.ordenarPorArtista(tabelaArray);;
                     break;
                 case "date":
-                    History.ordenarPorData(array);
+                    History.ordenarPorData(tabelaArray);
+                    break;
+                case "music":
+                    History.ordenarPorTrack(tabelaArray);
+                    break;
                 case "none":
                     break;
             }
 
             model.addAttribute("invalid", false);
             model.addAttribute("user", user);
-            model.addAttribute("usr", array);
+            model.addAttribute("usr", tabelaArray);
 
             return "history";
         }

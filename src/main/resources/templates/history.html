@@ -30,8 +30,8 @@
         <table th:if="${#lists.size(usr) > 0}">
             <tr>
                 <th class="headers"><a th:href= "@{/history(user=${user}, orderby='music')}">Música</a></th>
-                <th class="headers">Artista(s)</th>
-                <th class="headers">Álbum</th>
+                <th class="headers"><a th:href= "@{/history(user=${user}, orderby='artist')}">Artista(s)</a></th>
+                <th class="headers"><a th:href= "@{/history(user=${user}, orderby='album')}">Álbum</a></th>
                 <th class="headers"><a th:href= "@{/history(user=${user}, orderby='date')}">Data</a></th>
             </tr>
             <tr th:each="track : ${usr}">

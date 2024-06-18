@@ -14,6 +14,15 @@ import org.springframework.stereotype.Service;
 public class DatabaseService {
 
     private final HistoryRepository history;
+    private History[] cache;
+
+    public History[] getCache() {
+        return cache;
+    }
+
+    public void setCache(History[] cache) {
+        this.cache = cache;
+    }
 
     /**
      * Construtor da classe
