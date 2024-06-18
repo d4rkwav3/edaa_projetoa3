@@ -8,7 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+/**
+ * Classe responsável pela página de busca de faixas, utiliza a 
+ * anotação @Controller do Spring Boot.
+ * <p>Todas as requisições Rest do templeta search.html são feitas aqui</p>
+ * 
+ * @author Bruno Venâncio
+ */
 @Controller
 public class SearchController {
 

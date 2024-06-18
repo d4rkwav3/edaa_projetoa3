@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * Classe que controla as ações do template history.html
  * Usa a anotação @Controller do Spring Boot.
- * <p>Todas as requisições REST da página history são feitas
+ * <p>Todas as requisições REST do template history.html são feitas
  * aqui.</p>
  * 
  * @author Bruno Venâncio
  */
 @Controller
 public class HistoryController {
-    //private LastFmService lfms;
+
     private DatabaseService db;
 
     /**
@@ -28,9 +28,7 @@ public class HistoryController {
      * injetado como dependência da classe
      */
     public HistoryController(
-        // LastFmService lastFmService,
         DatabaseService database) {
-        // this.lfms = lastFmService;
         this.db = database;
     }
 

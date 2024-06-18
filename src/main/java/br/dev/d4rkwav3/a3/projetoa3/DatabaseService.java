@@ -17,18 +17,37 @@ public class DatabaseService {
     private History[] cache;
     private String userInCache;
 
+    /**
+     * Getter para saber qual o usuário no qual os
+     * dados em cache pertencem
+     * @return retorna o nome do usuário com dados em cache
+     */
     public String getUserInCache() {
         return userInCache;
     }
 
+    /**
+     * Setter para guardar o nome do último usuário que fez
+     * a requisição de busca da página history.html
+     * @param userInCache
+     */
     public void setUserInCache(String userInCache) {
         this.userInCache = userInCache;
     }
 
+    /**
+     * Método para retornar o ultimo resultado da memória ao invés]
+     * do banco de dados.
+     * @return 
+     */
     public History[] getCache() {
         return cache;
     }
 
+    /**
+     * Salva a pesquisa mais recente em cache
+     * @param cache recebe um array de classe History
+     */
     public void setCache(History[] cache) {
         this.cache = cache;
     }

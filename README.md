@@ -1,8 +1,11 @@
-
 # Projeto A3 2024.1
+
 ## Estrutura de Dados e Análise de Algoritmos
 
 Tema: Busca e Ordenação de dados usandos Dados da Last.FM
+
+A aplicação está disponível em [a3.d4rkwav3.dev.br](https://a3.d4rkwav3.dev.br/), caso queria rodar localmente,
+siga os passos a seguir.
 
 ## Membros
 
@@ -14,11 +17,11 @@ Tema: Busca e Ordenação de dados usandos Dados da Last.FM
 Java 17 ou superior\
 PostgreSQL 12 ou superior\
 Git 2.30 ou superior
+
 ## Configurando a aplicação (Opcional)
 
 O arquivo `src/main/resources/application.properties`
-contém algumas configurações que são necessárias para
-a execução da aplicação, as mais importantes são:
+contém algumas configurações que são necessárias para a execução da aplicação, as mais importantes são:
 
 - `server.port=6666` : a porta que será usuada pela aplicação, caso não esteja disponível ou esteja bloqueada, pode ser alterada aqui.
 
@@ -29,7 +32,8 @@ a execução da aplicação, as mais importantes são:
 
 Nenhuma dessas opções é necessário alterar, basta que exista um banco de dados chamado 'projetoa3', acessível por um usuário chamado 'projetoa3' que pode ser utilizado com a senha 'projetoa3'. Consulte a documentação do PostgreSQL para maiores informações sobre o tema.
 
-- Na pasta raiz do projeto, existe um script sql `projetoa3.sql`, execute esse script para criar uma tabela no banco de dados e popula-la com alguns dados, esse passo é necessário para que o programa seja executado corretamente.
+- Na pasta raiz do projeto, existe um script sql `projetoa3.sql`, execute esse script para criar uma tabela no banco de dados e popula-la com alguns dados, esse passo é necessário para as funcionalidades da aplicação.
+
 ## Rodando localmente
 
 Para rodar a aplicação localmente, os passos a seguir supoem que estejam sendo executados em uma janela do `PowerShell (Windows)` ou do `Bash/Zsh (Linux)`:
@@ -46,29 +50,21 @@ Entre no diretório do projeto:
   cd edaa_projetoa3
 ```
 
-Crie o pacote do aplicação
-
-No Windows:
-
-```powershell
-  .\mvnw package -DskipTests
-```
-
-No Linux:
+Crie o pacote do aplicação:
 
 ```bash
-  mvn package -DskipTests
+  ./mvnw clean package -DskipTests
 ```
 
-Para rodar a aplicação, vá até a pastar `target` e execute o aplicativo projetoa3-0.0.1.jar, é recomendavel que a aplicação seja executada em uma janela de terminal usando o comando abaixo:
+Para rodar a aplicação, execute o aplicativo projetoa3.jar dentro da pasta `target`, é recomendavel que a aplicação seja executada em uma janela de terminal usando o comando abaixo:
 
 ```bash
-  java -jar projetoa3-0.0.1.jar
+  java -jar target/projetoa3.jar
 ```
 
 Para finalizar a aplicação, basta pressionar as teclas `CTRL + C`.
 
-Enquanto estiver em execução, a aplicação será acessível a partir do  endereço abaixo no navegador:
+Enquanto estiver em execução, a aplicação será acessível a partir do endereço abaixo no navegador:
 
 ```bash
   localhost:6666

@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>br.dev.d4rkwav3.a3</groupId>
 	<artifactId>projetoa3</artifactId>
-	<version>0.0.1</version>
+	<version>1.0.0</version>
 	<name>projetoa3</name>
 	<description>Aplicação do projeto A3 de estrutura de dados e análise de algoritmos</description>
 	<properties>
@@ -65,6 +65,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>projetoA3</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

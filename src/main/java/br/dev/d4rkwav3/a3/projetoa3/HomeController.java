@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * Classe responsável pela página inicial do projeto, utiliza a 
- * anotação @Service do Spring Boot.
- * <p>Todas as requisições Rest da página inicial são feitas aqui</p>
+ * anotação @Controller do Spring Boot.
+ * <p>Todas as requisições Rest do template index.html são feitas aqui</p>
  * 
  * @author Bruno Venâncio
  */

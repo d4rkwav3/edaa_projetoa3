@@ -16,7 +16,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Classe de modelo da tabela do banco de dados.
+ * Classe de modelo da tabela do banco de dados e onde os métodos
+ * de busca e ordenação estão disponíveis estaticamente.
  * As anotações @NoArgsConstructor e @AllArgsConstructor geram
  * um construtores para nenhum e todos os argumentos.
  * A anotação @Data cria diversos métodos como toString e outros
