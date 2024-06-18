@@ -37,7 +37,7 @@ public class History {
     private String artist;
     private String track;
     private String album;
-    @Column(name = "dateTime", columnDefinition = "TIMESTAMP")
+    @Column(name = "datetime", columnDefinition = "TIMESTAMP")
     private LocalDateTime date;
 
     /**

@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -54,12 +53,15 @@ public class HistoryController {
     @GetMapping("/history")
     public String getHistory(
         @RequestParam(required = false) String user, 
-        Model model, 
-        @ModelAttribute FormData input) {
+        Model model) {
 
         if (user == null) {
             model.addAttribute("invalid", true);
             model.addAttribute("user", user);
+            return "history";
+        } else if (user.equals("")) {
+            model.addAttribute("invalid", true);
+            model.addAttribute("user", null);
             return "history";
         } else {
             List<History> historico = db.getAll();

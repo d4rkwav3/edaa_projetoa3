@@ -12,33 +12,33 @@
     <h2 th:if="${invalid == true}">Digite o nome de usuário</h2>
 
     <form id="history" method="get" action="/history">
-        <button><a href="/">Voltar para o início</a></button>
+        <button class="history"><a href="/">Voltar para o início</a></button>
 
-        <label for="user" id="pad">Insira seu nome de usuário da Last.FM</label>
-        <input type="text" name="user" id="username">
+        <label for="user" id="pad">Insira seu nome de usuário da Last.FM :</label>
+        <input type="text" name="user" id="username" placeholder="Digite um nome de usuário">
     
         <button class="history" type="submit">Pesquisar histórico</button>
     </form>
 
-    <h1 th:if="${invalid == false}">Ranks musicais para <span th:text="${user}"></span></h1>
+    <h1 th:if="${invalid == false}">Ranks musicais <span th:if="${invalid == false}">para</span> <span th:text="${user}"></span></h1>
 
-    <!-- <div>
-        <button><a href="/">Voltar para o início</a></button>
-    </div> -->
+    <h2 th:if="${usr == null}">Digite um usuário válido para começar (ex: user1, user2)</h2>
 
-    <!-- <h2><span th:text="${hist.size}"></span> registros encontrados (histórico)</h2> -->
-    <h2><span th:text="${usr.size}"></span> registros encontrados</h2>
+    <h2 th:if="${usr != null}"><span th:text="${usr.size}"></span> registros encontrados</h2>
 
-    <table th:if="${usr.isEmpty == false}">
-        <tr>
-            <th>Música</th>
-            <th>Artista(s)</th>
-            <th>Álbum</th>
-        </tr>
-        <tr th:each="track : ${usr}">
-            <td th:text="${track.getTrack}"></td>
-            <td th:text="${track.getArtist}"></td>
-            <td th:text="${track.getAlbum}"></td>
-        </tr>
-    </table>
+    <div id="info" th:if="${usr != null}">
+        <table th:if="${usr.isEmpty == false}">
+            <tr>
+                <th>Música</th>
+                <th>Artista(s)</th>
+                <th>Álbum</th>
+            </tr>
+            <tr th:each="track : ${usr}">
+                <td th:text="${track.getTrack}"></td>
+                <td th:text="${track.getArtist}"></td>
+                <td th:text="${track.getAlbum}"></td>
+            </tr>
+        </table>
+    </div>
+    
 </body>
