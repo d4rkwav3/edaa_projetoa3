@@ -67,7 +67,7 @@ form > button {
     margin-top: 3vw;
 }
 
-#history, #info {
+#history, #info, .link {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -110,4 +110,21 @@ table {
 
 #trackname {
     margin-bottom: 1.6vw;
+}
+
+div > a {
+    font-size: 1vw;
+    text-decoration: underline;
+    color: lightgray;
+    size: 2vw;
+    margin: 1vw;
+    padding: 1vw;
+    border-radius: 5px;
+}
+
+div > img {
+    width: 30px;
+    height: 30px;
+    padding-top: 1.8vw;
+    margin-right: -1.3vw;
 }

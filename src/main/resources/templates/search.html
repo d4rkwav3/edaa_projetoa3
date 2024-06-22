@@ -21,6 +21,8 @@
         <button class="history" type="submit">Pesquisar</button>
     </form>
 
+    <h3>Obs: A busca só retorna resultados exatos!</h3>
+
     <h1 th:if="${result != null}"><span th:text="${#lists.size(result)}"></span> registro(s) encontrados para o termo <span th:text="${track}"></span></h1>
 
     <div id="info" th:if="${result != null}">

@@ -20,11 +20,11 @@
         <button class="history" type="submit">Pesquisar histórico</button>
     </form>
 
-    <!-- <h1 th:if="${invalid == false}">Ranks musicais <span th:if="${invalid == false}">para</span> <span th:text="${user}"></span></h1> -->
-
     <h2 th:if="${usr == null}">Digite um usuário válido para começar (ex: user1, user2)</h2>
 
     <h1 th:if="${usr != null}"><span th:text="${#lists.size(usr)}"></span> registros encontrados para <span th:text="${user}"></span></h1>
+
+    <h3 th:if="${usr != null}">Para ordenar a tabela, clique em um cabeçalho (Música, Álbum, etc).</h3>
 
     <div id="info" th:if="${usr != null}">
         <table th:if="${#lists.size(usr) > 0}">
